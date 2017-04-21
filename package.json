@@ -12,6 +12,7 @@
     "express-load": "^1.1.15",
     "mongoose": "^4.9.2",
     "mosca": "^2.3.0",
-    "mqtt": "^2.5.0"
+    "mqtt": "^2.5.0",
+    "socket.io": "^1.7.3"
   }
 }

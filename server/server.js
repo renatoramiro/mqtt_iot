@@ -1,5 +1,6 @@
 var server = require('./config/mqtt')();
 var Device = require('./app/model/device')();
+var io = require('socket.io')(3131);
 var deviceFound;
 
 server.on('ready', setup);
@@ -34,10 +35,12 @@ server.on('published', function (packet, client) {
     });
     deviceFound.save(function (err) {
       if (err) {
-        console.log(err);
+        console.error(err);
+        io.emit('news', {error: err});
         return;
       }
-      console.log('Data was successfully created.')
+      io.emit('news', {hello: payload})
+      console.info('Data was successfully created.')
     });
   }
 });
